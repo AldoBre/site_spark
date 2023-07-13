@@ -1,34 +1,43 @@
 <template>
   <v-app theme="dark">
     <nav>
-      <v-app-bar>
-        <v-col cols="1">
-            <router-link to="/">
-              <v-img src="caminho_para_a_imagem">Spark Code</v-img>
-            </router-link>
-        </v-col>
+      <v-app-bar app>
+        <v-app-bar-nav-icon class="d-sm-none"  @click.stop="toggleDrawer"></v-app-bar-nav-icon>
+        <v-toolbar-title>
+          <router-link to="/">
+            <v-img src="caminho_para_a_imagem">Spark Code</v-img>
+          </router-link>
+        </v-toolbar-title>
+        <v-toolbar-items class="hidden-sm-and-down mr-16">
 
-        <v-col cols="10">
+                <v-btn text to="/">Porque Nos?</v-btn>
+                <v-btn text to="/about">Como Fazemos?</v-btn>
+                <v-btn text to="/contato">Quem Ajudamos?</v-btn>
+                <v-btn text to="/contato">Nossos Contatos</v-btn>
 
-            <div class="d-flex text-center justify-center gap">
-              <v-btn text to="/">Porque Nos?</v-btn>
-              <v-btn text to="/about">Como Fazemos?</v-btn>
-              <v-btn text to="/contato">Quem Ajudamos?</v-btn>
-              <v-btn text to="/contato">Nossos Contatos</v-btn>
-            </div>
-        </v-col>
-        <v-col cols="1">
-
-            <div class="d-flex text-center">
-            <v-btn text to="/" class="vibrate">WHATSAPP</v-btn>
-            </div>
-        </v-col>
-
-        <div class="text-center">
-            Teste
-        </div>
+        </v-toolbar-items>
+        <v-btn text to="/" class="vibrate">WHATSAPP</v-btn>
       </v-app-bar>
+
+      <v-navigation-drawer temporary v-model="drawer" >
+          <v-list>
+            <v-list-item to="/" exact>
+              <v-list-item-title>Porque Nos?</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/about" exact>
+              <v-list-item-title>Como Fazemos?</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/contato" exact>
+              <v-list-item-title>Quem Ajudamos?</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/contato" exact>
+              <v-list-item-title>Nossos Contatos</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+
     </nav>
+
 
     <v-main class="d-flex justify-center teste">
       <router-view></router-view>
@@ -70,6 +79,7 @@ export default {
   data() {
     return {
       timeout: 3000,
+      drawer: false,
     };
   },
   computed: {
@@ -98,11 +108,21 @@ export default {
         color: "green",
       });
     },
+    toggleDrawer() {
+      this.drawer = !this.drawer;
+    },
   },
+
 };
 </script>
 
 <style>
+
+.toolbar-items-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .gap{
     gap: 1rem;
 }
