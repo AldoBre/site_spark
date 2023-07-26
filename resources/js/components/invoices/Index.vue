@@ -4,17 +4,13 @@
       <v-col cols="12">
         <div class="d-flex flex-column gap transparent-card pa-2 px-5">
           <div>
-            <h1 class="text-h3 font-weight-black">
-              Desenvolvimento de Software Personalizado
-            </h1>
+            <h2 class="text-h4 font-weight-black">
+                Consultoria Bi e Desenvolvimento Personalizado de Software
+            </h2>
           </div>
           <div class="d-flex py-4">
-            <p class="text-h5 w-75 ml-10">
-              Somos a <strong>Spark Code</strong>, especialistas em
-              desenvolvimento de software personalizado para impulsionar o
-              crescimento e a eficiência do seu negócio.Transformamos ideias em
-              realidade, proporcionando experiências digitais excepcionais e
-              impulsionando o sucesso dos nossos clientes.
+            <p class="text-h6 w-75 ml-10">
+                Transforme sua visão em realidade com soluções de software personalizadas e a poderosa inteligência do Power BI! Somos apaixonados por desenvolver as ferramentas tecnológicas ideais para atender às necessidades únicas do seu negócio. Nossa equipe altamente qualificada está pronta para entender seus desafios e criar soluções inovadoras que impulsionem a eficiência, a produtividade e o crescimento dos seus negócios. Seu sucesso é nossa missão!
             </p>
           </div>
         </div>
@@ -30,20 +26,17 @@
           <v-row class="mt-7">
             <v-col cols="4">
               <div>
-                Experiência em desenvolvimento de software personalizado para
-                atender às suas necessidades exclusivas;
+                Soluções sob medida para atender às necessidades específicas do seu negócio.
               </div>
             </v-col>
             <v-col cols="4">
               <div>
-                Soluções inovadoras e escaláveis para impulsionar o crescimento
-                do seu negócio;
+                Experiência e expertise de uma equipe altamente qualificada.
               </div>
             </v-col>
             <v-col cols="4">
               <div>
-                Interface amigável e intuitiva para melhorar a experiência do
-                usuário;
+                Inovação tecnológica constante.
               </div>
             </v-col>
           </v-row>
@@ -52,14 +45,17 @@
           <v-row class="px-5 d-flex align-center justify-center mt-16">
             <v-col cols="4">
               <div>
-                Atendimento personalizado e acompanhamento em todas as etapas do
-                pré e do pós projeto;
+                Análises avançadas para insights poderosos.
               </div>
             </v-col>
             <v-col cols="4">
               <div>
-                Experiência em desenvolvimento de software personalizado para
-                atender às suas necessidades exclusivas;
+                Visualizações impactantes em dashboards interativos.
+              </div>
+            </v-col>
+            <v-col cols="4">
+              <div>
+                Conectividade com diversas fontes de dados.
               </div>
             </v-col>
           </v-row>
@@ -68,17 +64,17 @@
       <v-col cols="5">
         <v-carousel>
           <v-carousel-item
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+            src="img/img01.jpg"
             cover
           ></v-carousel-item>
 
           <v-carousel-item
-            src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
+            src="img/img02.jpg"
             cover
           ></v-carousel-item>
 
           <v-carousel-item
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            src="img/img03.jpg"
             cover
           ></v-carousel-item>
         </v-carousel>
@@ -88,7 +84,7 @@
       <v-col cols="12">
         <div class="transparent-card pa-5 text-center">
           <v-col cols="12">
-            <h2>Tecnologias utilizadas</h2>
+            <h2>Tecnologias Utilizadas</h2>
           </v-col>
           <div class="d-flex align-center">
 
@@ -133,6 +129,6 @@ export default {};
   color: white;
 }
 .gap {
-  gap: 3rem;
+  gap: 1rem;
 }
 </style>

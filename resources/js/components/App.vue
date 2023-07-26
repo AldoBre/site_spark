@@ -2,46 +2,45 @@
   <v-app theme="dark">
     <nav>
       <v-app-bar app>
-        <v-app-bar-nav-icon class="d-sm-none"  @click.stop="toggleDrawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon
+          class="d-sm-none"
+          @click.stop="toggleDrawer"
+        ></v-app-bar-nav-icon>
         <v-toolbar-title>
           <router-link to="/">
-            <v-img src="caminho_para_a_imagem">Spark Code</v-img>
+            <v-img src="caminho_para_a_imagem">Belmira Tech</v-img>
           </router-link>
         </v-toolbar-title>
         <v-toolbar-items class="hidden-sm-and-down mr-16">
-
-                <v-btn text to="/">Porque Nos?</v-btn>
-                <v-btn text to="/about">Como Fazemos?</v-btn>
-                <v-btn text to="/contato">Quem Ajudamos?</v-btn>
-                <v-btn text to="/contato">Nossos Contatos</v-btn>
-
+          <v-btn text>Porque Nos?</v-btn>
+          <v-btn text>Como Fazemos?</v-btn>
+          <v-btn text>Quem Ajudamos?</v-btn>
+          <v-btn text>Nossos Contatos</v-btn>
         </v-toolbar-items>
-        <v-btn text to="/" class="vibrate">WHATSAPP</v-btn>
+        <v-btn text class="vibrate">WHATSAPP</v-btn>
       </v-app-bar>
 
-      <v-navigation-drawer temporary v-model="drawer" >
-          <v-list>
-            <v-list-item to="/" exact>
-              <v-list-item-title>Porque Nos?</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/about" exact>
-              <v-list-item-title>Como Fazemos?</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/contato" exact>
-              <v-list-item-title>Quem Ajudamos?</v-list-item-title>
-            </v-list-item>
-            <v-list-item to="/contato" exact>
-              <v-list-item-title>Nossos Contatos</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-navigation-drawer>
-
+      <v-navigation-drawer temporary v-model="drawer">
+        <v-list>
+          <v-list-item exact>
+            <v-list-item-title>Porque Nos?</v-list-item-title>
+          </v-list-item>
+          <v-list-item exact>
+            <v-list-item-title>Como Fazemos?</v-list-item-title>
+          </v-list-item>
+          <v-list-item exact>
+            <v-list-item-title>Quem Ajudamos?</v-list-item-title>
+          </v-list-item>
+          <v-list-item exact>
+            <v-list-item-title>Nossos Contatos</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
     </nav>
-
 
     <v-main class="d-flex justify-center teste">
       <router-view></router-view>
-    <!--   <v-dialog v-model="$store.getters.loading" persistent width="300">
+      <!--   <v-dialog v-model="$store.getters.loading" persistent width="300">
         <v-card color="blue-darken-4" class="pa-4">
           <v-card-text>
             <p class="body-1 white--text">Carregando ...</p>
@@ -62,13 +61,50 @@
       </template>
     </v-snackbar>
 
-    <v-footer app bottom fixed color="grey-darken-3">
-      <div class="d-flex justify-end w-100">
-        <router-link
-          class="text-decoration-none text-grey-lighten-5 text-caption"
-          to="/admin/login"
-          >Area do Admin</router-link
-        >
+    <v-footer bottom color="grey-darken-3">
+      <div>
+        <p>Belmira Tech</p>
+        <p>Consultoria Bi e desenvolvimento personalizado de software</p>
+        <div>
+          <p>Onde Estamos?</p>
+          <p>Rua Tal, bairro tal, n00</p>
+          <p>Inovale - Polo de Inovação Vale do Rio do Peixe</p>
+          <p>Joaçaba - SC</p>
+        </div>
+      </div>
+
+      <div>
+        <v-img width="90" cover src="img/logo_footer.png"> </v-img>
+        <v-icon color="pink-lighten-1">mdi-instagram</v-icon>
+        <v-icon color="blue">mdi-linkedin</v-icon>
+        <v-img> </v-img>
+      </div>
+
+      <div>
+        <div>
+            <p>Contatos</p>
+            <p>
+                <v-icon
+                start>
+                    mdi-email
+                </v-icon>
+                contato@belmiratech.com.br
+            </p>
+            <p>
+                <v-icon
+                start>
+                    mdi-whatsapp
+                </v-icon>
+                (49) 99973 - 3762
+            </p>
+        </div>
+        <div class="d-flex justify-end w-100">
+          <router-link
+            class="text-decoration-none text-grey-lighten-5 text-caption"
+            to="/admin/login"
+            >Area do Admin</router-link
+          >
+        </div>
       </div>
     </v-footer>
   </v-app>
@@ -112,19 +148,17 @@ export default {
       this.drawer = !this.drawer;
     },
   },
-
 };
 </script>
 
 <style>
-
 .toolbar-items-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.gap{
-    gap: 1rem;
+.gap {
+  gap: 1rem;
 }
 .teste {
   background: black;
@@ -169,5 +203,4 @@ export default {
 .vibrate {
   animation: vibrate 0.3s infinite;
 }
-
 </style>
