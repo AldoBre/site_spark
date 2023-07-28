@@ -62,50 +62,74 @@
     </v-snackbar>
 
     <v-footer bottom color="grey-darken-3">
-      <div>
-        <p>Belmira Tech</p>
-        <p>Consultoria Bi e desenvolvimento personalizado de software</p>
-        <div>
-          <p>Onde Estamos?</p>
-          <p>Rua Tal, bairro tal, n00</p>
-          <p>Inovale - Polo de Inovação Vale do Rio do Peixe</p>
-          <p>Joaçaba - SC</p>
-        </div>
-      </div>
+    <v-row
+    align="center"
+    no-gutters>
 
-      <div>
-        <v-img width="90" cover src="img/logo_footer.png"> </v-img>
-        <v-icon color="pink-lighten-1">mdi-instagram</v-icon>
-        <v-icon color="blue">mdi-linkedin</v-icon>
-        <v-img> </v-img>
-      </div>
+        <v-col>
+            <h3>Belmira Tech</h3>
+            <h5 class="ml-2 mb-2">Consultoria Bi e desenvolvimento personalizado de software</h5>
+            <div>
+                <h4 class="mb-2">Onde Estamos?</h4>
+                <h5>Rua Tal, bairro tal, n00</h5>
+                <h5>Inovale - Polo de Inovação Vale do Rio do Peixe</h5>
+                <h5>Joaçaba - SC</h5>
+            </div>
+        </v-col>
 
-      <div>
-        <div>
-            <p>Contatos</p>
-            <p>
-                <v-icon
-                start>
-                    mdi-email
-                </v-icon>
-                contato@belmiratech.com.br
-            </p>
-            <p>
-                <v-icon
-                start>
-                    mdi-whatsapp
-                </v-icon>
-                (49) 99973 - 3762
-            </p>
-        </div>
-        <div class="d-flex justify-end w-100">
-          <router-link
-            class="text-decoration-none text-grey-lighten-5 text-caption"
-            to="/admin/login"
-            >Area do Admin</router-link
-          >
-        </div>
-      </div>
+        <v-col class="d-flex flex-column justify-center align-center">
+
+            <a href="#"><v-img width="90" cover src="img/logo_footer.png"> </v-img></a>
+
+
+            <v-col class=" text-center">
+                <a href="https://www.instagram.com/" target="_blank"  class="text-decoration-none text-grey-lighten-5 text-caption">
+                    <v-icon color="pink-lighten-1" size="30">mdi-instagram</v-icon>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank"  class="text-decoration-none text-grey-lighten-5 text-caption">
+                    <v-icon color="blue" size="30">mdi-linkedin</v-icon>
+                </a>
+            </v-col>
+            <v-img> </v-img>
+        </v-col>
+
+        <v-col class="d-flex flex-column ml-5 ">
+
+                <h3 class="mb-1">Contatos</h3>
+                <div>
+                    <p>
+                        <v-icon
+                        start>
+                            mdi-email
+                        </v-icon>
+                        contato@belmiratech.com.br
+                    </p>
+                    <p>
+                        <v-icon
+                        start>
+                            mdi-whatsapp
+                        </v-icon>
+                        (49) 99973 - 3762
+                    </p>
+                </div>
+
+                <v-col class="mt-1 d-flex justify-space-between">
+                    <a href="https://www.poloinovale.com.br/">
+                        <v-img width="90" src="img/inovale.png"></v-img>
+                    </a>
+                    <div class="d-flex align-end">
+                        <router-link
+                        class="text-decoration-none text-grey-lighten-5 text-caption al"
+                        to="/admin/login"
+                        >Area do Admin</router-link
+                        >
+                    </div>
+                </v-col>
+
+        </v-col>
+
+
+    </v-row>
     </v-footer>
   </v-app>
 </template>
