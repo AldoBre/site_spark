@@ -7,6 +7,7 @@ import HomeAdmin from '../components/views/admin/HomeAdmin.vue'
 import AppAdmin from '../components/AppAdmin.vue'
 import AppDefault from '../components/views/AppDefault.vue'
 import ImagesCarrousel from '../components/views/admin/ImagesCarrousel.vue'
+import Grafico from '../components/views/admin/GraphicRam.vue'
 
 const routes = [
     {
@@ -41,6 +42,12 @@ const routes = [
                 name: 'ImagesCarrousel',
                 component: ImagesCarrousel,
                 meta: { title: 'Carrousel' }
+            },
+            {
+                path: 'grafico',
+                name: 'grafico',
+                component: Grafico,
+                meta: { title: 'grafico' }
             }
 
         ]
