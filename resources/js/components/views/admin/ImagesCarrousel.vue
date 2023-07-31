@@ -1,7 +1,11 @@
 <template>
   <v-container fluid>
     <v-row>
-        HOME
+        <v-card>
+            <v-card-title primary-title>
+                title
+            </v-card-title>
+        </v-card>
     </v-row>
   </v-container>
 </template>
