@@ -6,15 +6,32 @@
       <p>Shared Memory: {{ Math.floor(memoryData.share_memory_mb) }} MB</p>
       <p>Cache Memory: {{ Math.floor(memoryData.cache_memory_mb) }} MB</p>
     </div>
+    <Bar
+    id="my-chart-id"
+    :options="chartOptions"
+    :data="chartData"
+  />
   </template>
 
   <script>
   import axios from "axios";
+  import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
   export default {
+    components: { Bar },
     data() {
       return {
         memoryData: {},
+        chartData: {
+        labels: [ 'January', 'February', 'March' ],
+        datasets: [ { data: [40, 20, 12] } ]
+      },
+      chartOptions: {
+        responsive: true
+      }
       };
     },
     mounted() {
@@ -24,7 +41,7 @@
     methods: {
       fetchMemoryData() {
         axios
-          .get("http://191.252.113.222:5000/api/memory_usage") // Substitua SUA_API_URL pela URL real da sua API
+          .get("https://sparkdev.com.br/api/memory_usage") // Substitua SUA_API_URL pela URL real da sua API
           .then((response) => {
             this.memoryData = response.data;
           })

@@ -15,22 +15,29 @@
           <v-list-item
             prepend-icon="mdi-image-plus"
             title="Imagens Carrousel"
-            to="images/carrousel"
+            router-link to="/admin/images/carrousel"
           ></v-list-item>
 
           <v-list-item
             prepend-icon="mdi-store-plus"
             title="Cadastrar Clientes"
+            to="cadastro/clientes"
           ></v-list-item>
 
           <v-list-item
             prepend-icon="mdi-account-plus"
             title="Cadastrar Usuário"
-
+            to="cadastro/usuario"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-account"
             title="Minha Conta"
+            to="minhaconta"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account"
+            title="Minha Conta"
+            router-link to="/admin/grafico"
           ></v-list-item>
 
           <v-list-item
@@ -103,6 +110,9 @@
           color: "green",
         });
       },
+      goTo () {
+      this.$router.push({ name: 'ImagesCarrousel' })
+    },
       toggleDrawer() {
         this.drawer = !this.drawer;
       },

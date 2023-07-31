@@ -24,6 +24,8 @@ const routes = [
     {
         path: '/admin',
         component: AppAdmin,
+        meta: { title: 'Admin' },
+        isMain: true,
         children: [
             {
                 path: 'login',
