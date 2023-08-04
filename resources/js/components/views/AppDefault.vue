@@ -25,6 +25,7 @@
                   color="green"
                   variant="outlined"
                   elevation="4"
+                  href=""
                   class="hover text-decoration-none"
                   >WhatsApp</v-btn
                 >
@@ -42,14 +43,14 @@
         <v-row align="center" no-gutters>
           <v-col>
             <h3>Belmira Tech</h3>
-            <h5 class="ml-2 mb-2">
+            <p class="ml-2 mb-2">
               Consultoria Bi e desenvolvimento personalizado de software
-            </h5>
+            </p>
             <div>
               <h4 class="mb-2">Onde Estamos?</h4>
-              <h5>Rua Tal, bairro tal, n00</h5>
-              <h5>Inovale - Polo de Inovação Vale do Rio do Peixe</h5>
-              <h5>Joaçaba - SC</h5>
+              <p>Rua Antônio Adolpho Maresch, 68</p>
+              <p>Flor da Serra | Joaçaba - SC</p>
+              <p class="font-weight-bold">Inovale - Polo de Inovação Vale do Rio do Peixe</p>
             </div>
           </v-col>
 
@@ -85,11 +86,11 @@
               <div class="text-center">
                 <p>
                   <v-icon start> mdi-email </v-icon>
-                  contato@belmiratech.com.br
+                  <a class="text-decoration-none text-white " href="mailto:contato@belmiratech.com.br"> contato@belmiratech.com.br</a>
                 </p>
                 <p>
                   <v-icon start> mdi-whatsapp </v-icon>
-                  (49) 99973 - 3762
+                  <a class="text-decoration-none text-white " href="http://">(49) 9 9973 - 3762</a>
                 </p>
               </div>
             </div>
@@ -108,7 +109,11 @@
             </v-col>
           </v-col>
         </v-row>
+
       </v-footer>
+      <div class="bg-red">
+          Desenvolvido por Belmira Tech - 2023 &copy; Todos os direitos reservados.
+      </div>
     </v-app>
   </template>
 
@@ -118,6 +123,7 @@
   </script>
 
   <style>
+
   .toolbar-items-wrapper {
     display: flex;
     align-items: center;
