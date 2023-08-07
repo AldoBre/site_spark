@@ -1,6 +1,9 @@
 <template>
     <v-container fluid class="fill-height d-flex align-center">
       <v-card justify-center color="grey-darken-4" class="mx-auto px-6 py-8" width="500">
+        <div class="mb-5 text-h4">
+            Área Administrativa
+        </div>
         <v-form v-model="form" @submit.prevent="onSubmit">
           <v-text-field
             v-model="email"
@@ -34,6 +37,9 @@
             Entrar
           </v-btn>
         </v-form>
+        <div class="text-center mt-5">
+            Desenvolvido por <span class="text-yellow-darken-1">Belmira Tech</span> &reg;
+        </div>
       </v-card>
     </v-container>
   </template>

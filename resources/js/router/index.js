@@ -8,6 +8,9 @@ import AppAdmin from '../components/AppAdmin.vue'
 import AppDefault from '../components/views/AppDefault.vue'
 import ImagesCarrousel from '../components/views/admin/ImagesCarrousel.vue'
 import Grafico from '../components/views/admin/GraphicRam.vue'
+import MyAccount from '../components/views/admin/MyAccount.vue'
+import RegisterUser from '../components/views/admin/RegisterUser.vue'
+import RegisterCustumer from '../components/views/admin/RegisterCustumer.vue'
 
 const routes = [
     {
@@ -50,6 +53,24 @@ const routes = [
                 name: 'grafico',
                 component: Grafico,
                 meta: { title: 'grafico' }
+            },
+            {
+                path: 'my-account',
+                name: 'MyAccount',
+                component: MyAccount,
+                meta: { title: 'Minha Conta' }
+            },
+            {
+                path: 'cadastro/usuario',
+                name: 'RegisterUser',
+                component: RegisterUser,
+                meta: { title: 'Cadastro de usuário' }
+            },
+            {
+                path: 'cadastro/clientes',
+                name: 'RegisterCustumer',
+                component: RegisterCustumer,
+                meta: { title: 'Cadastro de usuário' }
             }
 
         ]

@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Desenvolvimento de sistemas web personalizados, sites e landing pages para impulsionar o seu negócio. Conte com nossa expertise em consultoria em BI para obter insights poderosos. Soluções tecnológicas sob medida para atender às necessidades únicas do seu negócio. Transforme sua visão em realidade com a nossa equipe qualificada e as mais modernas tecnologias." />
 
         <title>Belmira Tech</title>
 

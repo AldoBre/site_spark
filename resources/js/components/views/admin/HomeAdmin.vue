@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-        HOME
+        Bem vindo a área administrativa do seu site!
     </v-row>
   </v-container>
 </template>

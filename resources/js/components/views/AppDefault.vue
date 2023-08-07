@@ -25,7 +25,8 @@
                   color="green"
                   variant="outlined"
                   elevation="4"
-                  href=""
+                  href="https://api.whatsapp.com/send?phone=5549999733762"
+                  target="_blank"
                   class="hover text-decoration-none"
                   >WhatsApp</v-btn
                 >
@@ -47,9 +48,9 @@
               Consultoria Bi e desenvolvimento personalizado de software
             </p>
             <div>
-              <h4 class="mb-2">Onde Estamos?</h4>
+              <h4 class="mb-2"> Onde Estamos? </h4>
               <p>Rua Antônio Adolpho Maresch, 68</p>
-              <p>Flor da Serra | Joaçaba - SC</p>
+              <p>Flor da Serra | Joaçaba - SC <v-icon color="red-darken-2">mdi-map-marker-radius</v-icon></p>
               <p class="font-weight-bold">Inovale - Polo de Inovação Vale do Rio do Peixe</p>
             </div>
           </v-col>
@@ -89,14 +90,14 @@
                   <a class="text-decoration-none text-white " href="mailto:contato@belmiratech.com.br"> contato@belmiratech.com.br</a>
                 </p>
                 <p>
-                  <v-icon start> mdi-whatsapp </v-icon>
-                  <a class="text-decoration-none text-white " href="http://">(49) 9 9973 - 3762</a>
+                  <v-icon color="green" start> mdi-whatsapp </v-icon>
+                  <a target="_blank" class="text-decoration-none text-white " href="https://api.whatsapp.com/send?phone=5549999733762">(49) 9 9973-3762</a>
                 </p>
               </div>
             </div>
 
             <v-col class="mt-1 d-flex justify-space-between">
-              <a href="https://www.poloinovale.com.br/">
+              <a target="_blank" href="https://www.poloinovale.com.br/">
                 <v-img width="90" src="img/inovale.png"></v-img>
               </a>
               <div class="d-flex align-end">
@@ -111,7 +112,7 @@
         </v-row>
 
       </v-footer>
-      <div class="bg-red">
+      <div class="bg-black text-center">
           Desenvolvido por Belmira Tech - 2023 &copy; Todos os direitos reservados.
       </div>
     </v-app>

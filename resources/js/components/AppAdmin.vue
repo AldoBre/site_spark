@@ -14,29 +14,29 @@
         <v-list dense nav>
           <v-list-item
             prepend-icon="mdi-image-plus"
-            title="Imagens Carrousel"
+            title="Imagens do Site"
             router-link to="/admin/images/carrousel"
           ></v-list-item>
 
           <v-list-item
             prepend-icon="mdi-store-plus"
             title="Cadastrar Clientes"
-            to="cadastro/clientes"
+            router-link to="/admin/cadastro/clientes"
           ></v-list-item>
 
           <v-list-item
             prepend-icon="mdi-account-plus"
             title="Cadastrar Usuário"
-            to="cadastro/usuario"
+            router-link to="/admin/cadastro/usuario"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-account"
             title="Minha Conta"
-            to="minhaconta"
+            router-link to="minhaconta"
           ></v-list-item>
           <v-list-item
-            prepend-icon="mdi-account"
-            title="Minha Conta"
+            prepend-icon="mdi-chart-bell-curve"
+            title="Disponibilidade do Sistema"
             router-link to="/admin/grafico"
           ></v-list-item>
 
@@ -68,9 +68,6 @@
         </template>
       </v-snackbar>
 
-      <v-footer app >
-        OPA
-      </v-footer>
     </v-app>
   </template>
 
@@ -110,9 +107,6 @@
           color: "green",
         });
       },
-      goTo () {
-      this.$router.push({ name: 'ImagesCarrousel' })
-    },
       toggleDrawer() {
         this.drawer = !this.drawer;
       },
