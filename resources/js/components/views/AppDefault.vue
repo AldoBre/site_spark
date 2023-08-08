@@ -112,7 +112,7 @@
         </v-row>
 
       </v-footer>
-      <div class="bg-black text-center">
+      <div class="bg-black text-center pa-1">
           Desenvolvido por Belmira Tech - 2023 &copy; Todos os direitos reservados.
       </div>
     </v-app>

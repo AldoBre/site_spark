@@ -34,6 +34,11 @@
               </div>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col cols="12" align="center">
+              <v-btn> Confirmar Alterações </v-btn>
+            </v-col>
+          </v-row>
         </v-card>
       </v-col>
     </v-row>
