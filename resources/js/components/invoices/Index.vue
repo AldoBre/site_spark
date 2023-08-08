@@ -5,7 +5,7 @@
         <div class="d-flex flex-column gap transparent-card pa-2 px-5">
           <div>
             <h1 class="font-weight-black text-center">
-              Consultoria Bi e Desenvolvimento Personalizado de Software
+              Consultoria Bi e Desenvolvimento de Sites e Sistemas Personalizados
             </h1>
           </div>
           <div class="d-flex py-4">
