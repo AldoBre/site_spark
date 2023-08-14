@@ -55,7 +55,7 @@ const routes = [
                 meta: { title: 'grafico' }
             },
             {
-                path: 'my-account',
+                path: 'minhaconta',
                 name: 'MyAccount',
                 component: MyAccount,
                 meta: { title: 'Minha Conta' }

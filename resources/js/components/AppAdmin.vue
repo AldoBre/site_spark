@@ -3,7 +3,7 @@
       <v-navigation-drawer expand-on-hover rail permanent >
         <v-list>
           <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
+            prepend-avatar="/img/img01.jpg"
             title="Admin Belmira"
             subtitle="admin@admin.com.br"
           ></v-list-item>
@@ -16,6 +16,7 @@
             prepend-icon="mdi-image-plus"
             title="Imagens do Site"
             router-link to="/admin/images/carrousel"
+            @click="setMessage()"
           ></v-list-item>
 
           <v-list-item
@@ -32,7 +33,7 @@
           <v-list-item
             prepend-icon="mdi-account"
             title="Minha Conta"
-            router-link to="minhaconta"
+            router-link to="/admin/minhaconta"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-chart-bell-curve"
@@ -62,11 +63,11 @@
       </v-main>
 
       <v-snackbar v-model="snackbar" :color="color" :timeout="timeout">
-        {{ message }}
-        <template v-slot:actions>
-          <v-btn color="white" @click="snackbar = false">Close</v-btn>
-        </template>
-      </v-snackbar>
+    {{ message }}
+    <template v-slot:actions>
+      <v-btn color="white" @click="snackbar = false">Close</v-btn>
+    </template>
+  </v-snackbar>
 
     </v-app>
   </template>
@@ -120,9 +121,5 @@
     margin-top: 80px;
   }
 
-  .v-snackbar {
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
   </style>

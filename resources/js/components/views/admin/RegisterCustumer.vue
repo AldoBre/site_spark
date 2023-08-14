@@ -3,8 +3,10 @@
     <v-row>
       <v-col cols="12">
         <v-card class="pa-5">
-            <div class="title-container">
-            <v-card-title class="text-center">Cadastro de Clientes</v-card-title>
+          <div class="title-container">
+            <v-card-title class="text-center"
+              >Cadastro de Clientes</v-card-title
+            >
           </div>
 
           <div class="button-container">
@@ -53,7 +55,7 @@
             </v-col>
           </v-row>
 
-          <v-row >
+          <v-row>
             <v-col cols="12" sm="3">
               <v-text-field label="CEP" variant="outlined" color="yellow">
               </v-text-field>
@@ -65,48 +67,56 @@
             </v-col>
 
             <v-col cols="4" sm="2">
-                <v-text-field label="Estado" variant="outlined" color="yellow">
+              <v-text-field label="Estado" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
           </v-row>
 
           <v-row>
             <v-col cols="12" sm="6">
-                <v-text-field label="Rua" variant="outlined" color="yellow">
+              <v-text-field label="Rua" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
 
             <v-col cols="12" sm="4">
-                <v-text-field label="Bairro" variant="outlined" color="yellow">
+              <v-text-field label="Bairro" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
 
             <v-col cols="6" sm="2">
-                <v-text-field label="Número" variant="outlined" color="yellow">
+              <v-text-field label="Número" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
           </v-row>
 
           <v-row>
             <v-col cols="12" sm="4">
-                <v-text-field label="E-mail" variant="outlined" color="yellow">
+              <v-text-field label="E-mail" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
 
             <v-col cols="12" sm="4">
-                <v-text-field label="Telefone" variant="outlined" color="yellow">
+              <v-text-field label="Telefone" variant="outlined" color="yellow">
               </v-text-field>
             </v-col>
 
             <v-col cols="12" sm="4">
-                <v-text-field label="Nome do Contato" variant="outlined" color="yellow">
+              <v-text-field
+                label="Nome do Contato"
+                variant="outlined"
+                color="yellow"
+              >
               </v-text-field>
             </v-col>
           </v-row>
 
           <v-row>
             <v-col align="center" cols="12" sm="4">
-                <v-text-field label="Serviço Desejado" variant="outlined" color="yellow">
+              <v-text-field
+                label="Serviço Desejado"
+                variant="outlined"
+                color="yellow"
+              >
               </v-text-field>
             </v-col>
           </v-row>
@@ -127,19 +137,19 @@ export default {};
 </script>
 
 <style>
-  .button-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 1.5rem;
-    margin-right: 1rem;
-  }
+.button-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+}
 
-  @media (max-width: 600px) {
-    .button-container {
-      position: static;
-      text-align: center;
-      margin-top: 20px;
-    }
+@media (max-width: 600px) {
+  .button-container {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
   }
+}
 </style>

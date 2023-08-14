@@ -85,12 +85,24 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <div class="transparent-card pa-5 text-center">
-          <h2>Nossos Clientes e parceiros</h2>
+    <v-col cols="12">
+      <div class="transparent-card pa-5 text-center">
+        <h2>Nossos Clientes e Parceiros</h2>
+
+        <div class="d-flex justify-center align-center">
+
+          <v-btn @click="prevSlide" class="mr-3">Anterior</v-btn>
+          <div class="d-flex gap">
+            <div v-for="(image, index) in visibleImages" :key="index">
+              <img width="235" :src="image" alt="Image">
+            </div>
+          </div>
+          <v-btn @click="nextSlide" class="ml-3">Próxima</v-btn>
         </div>
-      </v-col>
-    </v-row>
+
+      </div>
+    </v-col>
+  </v-row>
 
     <v-row>
       <v-col cols="12">
@@ -150,8 +162,47 @@
   </v-container>
 </template>
 
-  <script>
-export default {};
+<script>
+export default {
+  data() {
+    return {
+      images: [
+        'img/img01.jpg',
+        'img/img02.jpg',
+        'img/img03.jpg',
+        'img/img01.jpg',
+        'img/img02.jpg',
+        'img/img03.jpg',
+        'img/img01.jpg',
+        'img/img02.jpg',
+        'img/img03.jpg',
+        'img/img01.jpg',
+        // Adicione mais imagens conforme necessário
+      ],
+      currentPosition: 0,
+      imagesPerSlide: 4,
+    };
+  },
+  computed: {
+    visibleImages() {
+      const startIndex = this.currentPosition;
+      const endIndex = startIndex + this.imagesPerSlide;
+      return this.images.slice(startIndex, endIndex);
+    },
+  },
+  methods: {
+    nextSlide() {
+      if (this.currentPosition + this.imagesPerSlide < this.images.length) {
+        this.currentPosition++;
+      }
+    },
+    prevSlide() {
+      if (this.currentPosition > 0) {
+        this.currentPosition--;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

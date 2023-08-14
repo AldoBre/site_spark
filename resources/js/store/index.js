@@ -1,4 +1,5 @@
 import Vuex from "vuex";
+import axios from "axios";
 
 export default new Vuex.Store({
   state: {
@@ -7,7 +8,8 @@ export default new Vuex.Store({
       color: "",
     },
     loading: false,
-    ignore: false, // Adicionado o estado 'ignore'
+    ignore: false,
+    user: null,
   },
 
   getters: {
@@ -38,11 +40,14 @@ export default new Vuex.Store({
     IGNORE(state) {
       state.ignore = true;
     },
+    SET_USER(state, userData) {
+        state.user = userData;
+      },
   },
 
   actions: {
     message({ commit }, { text, color }) {
-      commit("MESSAGE", { text, color });
+        commit("MESSAGE", { text, color });
     },
     loading({ commit }) {
       commit("LOADING");
@@ -50,5 +55,25 @@ export default new Vuex.Store({
     ignoreLoading({ commit }) {
       commit("IGNORE");
     },
+    fetchUser({ commit }) {
+        try {
+          // Pega o token do Local Storage
+          const token = localStorage.getItem("authTokenBelmira");
+
+          if (token) {
+            // Define o token no cabeçalho das requisições
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+            // Faz a requisição para a rota /api/user
+            const response = axios.get("/api/user");
+
+            // Armazena as informações do usuário no state
+            commit("SET_USER", response.data); // Você precisa ter a mutation SET_USER definida
+          }
+        } catch (error) {
+          // Trate os erros conforme necessário
+          console.error("Erro ao buscar informações do usuário:", error);
+        }
+      },
   },
 });
