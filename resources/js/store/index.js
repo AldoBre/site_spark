@@ -55,25 +55,27 @@ export default new Vuex.Store({
     ignoreLoading({ commit }) {
       commit("IGNORE");
     },
-    fetchUser({ commit }) {
+    async getUserData({ commit }) {
         try {
-          // Pega o token do Local Storage
+
           const token = localStorage.getItem("authTokenBelmira");
 
           if (token) {
-            // Define o token no cabeçalho das requisições
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-            // Faz a requisição para a rota /api/user
-            const response = axios.get("/api/user");
+            const response = await axios.get("/api/user");
+            console.log("User data response:", response.data);
 
-            // Armazena as informações do usuário no state
-            commit("SET_USER", response.data); // Você precisa ter a mutation SET_USER definida
+            commit("SET_USER", response.data.user);
+            console.log("User data stored in state:", response.data);
           }
         } catch (error) {
-          // Trate os erros conforme necessário
-          console.error("Erro ao buscar informações do usuário:", error);
+          console.error("Error fetching user information:", error);
         }
+      },
+      async login({ commit, dispatch }, userData) {
+        await dispatch('getUserData'); // Chama o método para obter os dados do usuário
+    ; // Define os dados do usuário na store
       },
   },
 });

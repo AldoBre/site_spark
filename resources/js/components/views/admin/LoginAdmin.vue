@@ -72,6 +72,10 @@ export default {
         .post("/api/login", formData)
         .then((response) => {
             localStorage.setItem("authTokenBelmira", response.data.token);
+
+
+            this.$store.dispatch('login', response.data.user);
+
           this.$store.dispatch("message", {
             text: response.data.message,
             color: "green",
@@ -97,6 +101,7 @@ export default {
       return !!v || "Campo obrigatório!";
     },
   },
+
 };
 </script>
 
