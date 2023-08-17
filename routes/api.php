@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,13 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetPasswordLink']);
+Route::post('/password/reset', [ForgotPasswordController::class, 'resetPassword']);
 
 Route::middleware('auth:api')->group(function () {
+
     Route::get('/user', [AuthController::class, 'getUserData']);
+    Route::post('/check-token', [AuthController::class, 'checkAuth']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource('/images', ImageController::class);
 });

@@ -43,4 +43,30 @@ class AuthController extends Controller
             return response()->json(['message' => 'Usuário não autenticado'], 401);
         }
     }
+
+    public function checkAuth(Request $request)
+    {
+        try{
+            $token = $request->input('token');
+
+            if($token && Auth::guard('api')->check()){
+                return response()->json(['isValid' => true]);
+            }else{
+                return response()->json(['isValid' => false]);
+            }
+        }catch(\Exception $e){
+            return response()->json(['isValid' => false]);
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        try{
+            auth()->logout();
+
+            return response()->json(['message' => 'Você saiu com sucesso!']);
+        }catch(\Exception $e){
+            return response()->json(['message' => 'Erro ao tentar sair'],500);
+        }
+    }
 }

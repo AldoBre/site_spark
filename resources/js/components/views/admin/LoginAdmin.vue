@@ -24,11 +24,23 @@
           :readonly="loading"
           :rules="[required]"
           variant="outlined"
+          :append-icon="visibility ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="() => (visibility = !visibility)"
+          :type="visibility ? 'text' : 'password'"
           color="yellow"
           clearable
           label="Password"
-          placeholder="Enter your password"
+          placeholder="Insira sua senha"
         ></v-text-field>
+
+        <div class="text-end">
+          <a
+            class="text-center text-caption text-decoration-none text-blue"
+            @click="openForgotPasswordModal"
+          >
+            Esqueceu sua senha?
+          </a>
+        </div>
 
         <br />
 
@@ -45,9 +57,41 @@
       </v-form>
       <div class="text-center mt-5">
         Desenvolvido por
-        <span class="text-yellow-darken-1">Belmira Tech</span> &reg;
+        <span class="text-yellow-darken-1">Belmira Tech</span> &copy;
       </div>
     </v-card>
+
+    <v-dialog v-model="forgotPasswordModal" max-width="500">
+      <v-card>
+        <v-card-title class="text-h5"> Recuperação de Senha </v-card-title>
+        <v-card-text>
+          <v-form
+            v-model="forgotPasswordForm"
+            @submit.prevent="submitForgotPasswordForm"
+          >
+            <v-text-field
+              :rules="[required]"
+              variant="outlined"
+              color="yellow"
+              clearable
+              label="email"
+              v-model="formForgot.email"
+            >
+            </v-text-field>
+            <v-btn
+              :loading="loading1"
+              block
+              color="blue-darken-4"
+              size="large"
+              type="submit"
+              variant="elevated"
+            >
+              Enviar
+            </v-btn>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -59,11 +103,19 @@ export default {
     email: null,
     password: null,
     loading: false,
+    loading1: false,
+    visibility: false,
+    forgotPasswordModal: false,
+    forgotPasswordForm: false,
+    forgotPasswordEmail: null,
+    formForgot: {
+      email: null,
+    },
   }),
 
   methods: {
     confirmLogin() {
-        const localStorage = window.localStorage;
+      const localStorage = window.localStorage;
       const formData = new FormData();
       formData.append("email", this.email);
       formData.append("password", this.password);
@@ -71,23 +123,23 @@ export default {
       axios
         .post("/api/login", formData)
         .then((response) => {
-            localStorage.setItem("authTokenBelmira", response.data.token);
+          localStorage.setItem("authTokenBelmira", response.data.token);
 
-
-            this.$store.dispatch('login', response.data.user);
+          this.$store.dispatch("login", response.data.user);
 
           this.$store.dispatch("message", {
             text: response.data.message,
             color: "green",
           });
           this.$router.push("/admin/home");
-          console.log(response.data)
         })
         .catch((error) => {
           this.$store.dispatch("message", {
             text: error.response.data.message,
             color: "red",
           });
+          this.email = "";
+          this.password = "";
         });
     },
     onSubmit() {
@@ -100,8 +152,35 @@ export default {
     required(v) {
       return !!v || "Campo obrigatório!";
     },
+    openForgotPasswordModal() {
+      this.forgotPasswordModal = true;
+      this.forgotPasswordForm = true;
+      this.forgotPasswordEmail = null;
+    },
+    submitForgotPasswordForm() {
+      if (!this.forgotPasswordForm) return;
+      this.loading1 = true;
+      axios
+        .post("/api/password/email", this.formForgot)
+        .then((response) => {
+          this.$store.dispatch("message", {
+            text: response.data.message,
+            color: "green",
+          });
+          this.forgotPasswordForm = false;
+          this.forgotPasswordModal = false;
+          this.loading1 = false;
+          this.formForgot.email;
+        })
+        .catch((error) => {
+          this.$store.dispatch("message", {
+            text: error.response.data.message,
+            color: "red",
+          });
+          setTimeout(() => (this.loading1 = false), 2000);
+        });
+    },
   },
-
 };
 </script>
 

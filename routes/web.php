@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,4 @@ Route::get('/', function () {
 Route::get('/{pathMatch}', function (){
     return view('welcome');
 })->where('pathMatch',".*");
+

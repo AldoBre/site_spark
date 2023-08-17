@@ -11,6 +11,7 @@ import Grafico from '../components/views/admin/GraphicRam.vue'
 import MyAccount from '../components/views/admin/MyAccount.vue'
 import RegisterUser from '../components/views/admin/RegisterUser.vue'
 import RegisterCustumer from '../components/views/admin/RegisterCustumer.vue'
+import PasswordReset from '../components/views/admin/PasswordReset.vue'
 
 const routes = [
     {
@@ -37,40 +38,46 @@ const routes = [
                 meta: { title: 'Login Admin' }
             },
             {
+                path: 'password/reset/:token',
+                name: 'PasswordReset',
+                component: PasswordReset,
+                meta: { title: 'Redefinição de Senha' }
+            },
+            {
                 path: 'home',
                 name: 'Home',
                 component: HomeAdmin,
-                meta: { title: 'Home Admin' }
+                meta: { title: 'Home Admin', requiresAuth: true }
             },
             {
                 path: 'images/carrousel',
                 name: 'ImagesCarrousel',
                 component: ImagesCarrousel,
-                meta: { title: 'Carrousel' }
+                meta: { title: 'Carrousel', requiresAuth: true }
             },
             {
                 path: 'grafico',
                 name: 'grafico',
                 component: Grafico,
-                meta: { title: 'grafico' }
+                meta: { title: 'grafico', requiresAuth: true }
             },
             {
                 path: 'minhaconta',
                 name: 'MyAccount',
                 component: MyAccount,
-                meta: { title: 'Minha Conta' }
+                meta: { title: 'Minha Conta', requiresAuth: true }
             },
             {
                 path: 'cadastro/usuario',
                 name: 'RegisterUser',
                 component: RegisterUser,
-                meta: { title: 'Cadastro de usuário' }
+                meta: { title: 'Cadastro de usuário', requiresAuth: true }
             },
             {
                 path: 'cadastro/clientes',
                 name: 'RegisterCustumer',
                 component: RegisterCustumer,
-                meta: { title: 'Cadastro de usuário' }
+                meta: { title: 'Cadastro de usuário', requiresAuth: true }
             }
 
         ]
@@ -87,14 +94,26 @@ const router = createRouter({
     routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     let baseTitle = "Belmira Tech";
-
     let pageTitle = to.meta && to.meta.title ? `${baseTitle} | ${to.meta.title}` : baseTitle;
-
     document.title = pageTitle;
 
-    next();
+    if (to.meta.requiresAuth) {
+        const isAuthenticated = await store.dispatch('checkAuth')
+
+        if (!isAuthenticated) {
+            store.dispatch("message", {
+                text: 'Usuário não autenticado',
+                color: "blue",
+            });
+            next('/admin/login');
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
 });
 
 router.beforeResolve(async (to, from, next) => {

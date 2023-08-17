@@ -7,7 +7,6 @@
           :title="user.name"
           :subtitle="user.email"
         ></v-list-item>
-
       </v-list>
 
       <v-divider></v-divider>
@@ -47,7 +46,8 @@
           to="/admin/grafico"
         ></v-list-item>
 
-        <v-list-item prepend-icon="mdi-logout" title="Sair"></v-list-item>
+        <v-list-item prepend-icon="mdi-logout" title="Sair" @click="logout">
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -77,7 +77,6 @@
     </v-snackbar>
   </v-app>
 </template>
-
 
   <script>
 export default {
@@ -110,15 +109,52 @@ export default {
     },
   },
   methods: {
-    setMessage() {
-      this.$store.dispatch("message", {
-        text: "Mensagem de exemplo",
-        color: "green",
-      });
-    },
     toggleDrawer() {
       this.drawer = !this.drawer;
     },
+    logout() {
+      axios
+        .post("/api/logout")
+        .then((response) => {
+          localStorage.removeItem("authTokenBelmira");
+
+          this.$store.commit("SET_USER", null);
+          this.$store.commit("SET_AUTH", false);
+
+          this.$store.dispatch("message", {
+            text: response.data.message,
+            color: "green",
+          });
+          this.$router.push("/admin/login");
+        })
+        .catch((error) => {
+          this.$store.dispatch("message", {
+            text: error.message,
+            color: "red",
+          });
+        });
+    },
+  },
+  mounted() {
+    const token = localStorage.getItem("authTokenBelmira");
+
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      this.$store.dispatch("login").then((isLoggedIn) => {
+        if (this.$route.path === "/admin/login") {
+          this.$router.push("/admin/home");
+          if (isLoggedIn) {
+            this.$router.push("/admin/home");
+          }
+        } else {
+          if (this.$route.meta.requiresAuth) {
+            this.$router.push(this.$route.path);
+          } else {
+            this.$router.push("/admin/home");
+          }
+        }
+      });
+    }
   },
 };
 </script>
