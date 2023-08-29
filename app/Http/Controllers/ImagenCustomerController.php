@@ -28,7 +28,23 @@ class ImagenCustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'name.*' => 'required|string|max:255',
+            'link.*' => 'required|string|max:255'
+        ]);
+
+        foreach($request->file('images') as $index => $image){
+            $imagePath = $image->store('customer_images');
+
+            ImagenCustomer::create([
+                'name' => $request->names[$index],
+                'link' => $request->link[$index],
+                'image_custumer' => $imagePath,
+            ]);
+        }
+
+        return response()->json(['message' => 'Clientes salvos com sucesso'],201);
     }
 
     /**

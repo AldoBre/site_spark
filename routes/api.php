@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ImagenBannerController;
+use App\Http\Controllers\ImagenCarrouselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,5 @@ Route::middleware('jwt.auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::apiResource('/imageBanner', ImagenBannerController::class);
+    Route::apiResource('/imageCarrousel', ImagenCarrouselController::class);
 });

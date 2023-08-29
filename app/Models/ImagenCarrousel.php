@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ImagenCarrousel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'image_carrousel'
+    ];
 }

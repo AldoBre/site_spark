@@ -55,7 +55,7 @@
             Imagens do Carrousel
           </v-card-title>
           <v-card-text class="text-center">
-            Aqui é possível adicionar até 5 imagens.
+            Aqui é possível adicionar até 3 imagens.
           </v-card-text>
           <v-row>
             <v-col cols="12" sm="6">
@@ -64,6 +64,7 @@
                   Selecione as Imagens
                   <div>
                     <v-file-input
+                    v-model="selectedImages"
                       variant="outlined"
                       color="yellow"
                       multiple
@@ -87,7 +88,7 @@
           </v-row>
           <v-row>
             <v-col cols="12" align="center">
-              <v-btn> Confirmar Alterações </v-btn>
+              <v-btn @click="uploadCarrousels"> Confirmar Alterações </v-btn>
             </v-col>
           </v-row>
         </v-card>
@@ -152,6 +153,7 @@ export default {
   data() {
     return {
       selectedImage: null,
+      selectedImages: [],
       bannerImage: [],
       imagePreview: null,
     };
@@ -193,6 +195,40 @@ export default {
           });
         });
     },
+
+    uploadCarrousels(){
+        if(this.selectedImages.length !== 3){
+            this.$store.dispatch("message",{
+                text: "Selecione 3 imagens.",
+                color: "red",
+            });
+            return;
+        }
+
+        const formData = new FormData();
+
+        this.selectedImages.forEach((image, index) => {
+            formData.append(`image_${index + 1}`, image);
+        });
+
+        console.log(this.selectedImages)
+        axios.post('/api/imageCarrousel', formData)
+        .then((response) =>{
+            console.log(response.data)
+            this.$store.dispatch("message", {
+            text: response.data.message,
+            color: "green",
+          });
+        })
+        .catch((error) => {
+          this.$store.dispatch("message", {
+            text: "Erro ao enviar imagens.",
+            color: "red",
+          });
+        });
+
+    },
+
     getImages() {
       axios.get("/api/imageBanner").then((response) => {
         if (response.data.length > 0) {
@@ -202,6 +238,8 @@ export default {
         }
       });
     },
+
+
   },
   watch: {
     selectedImage: function(newVal, oldVal) {
