@@ -12,6 +12,7 @@ import MyAccount from '../components/views/admin/MyAccount.vue'
 import RegisterUser from '../components/views/admin/RegisterUser.vue'
 import RegisterCustumer from '../components/views/admin/RegisterCustumer.vue'
 import PasswordReset from '../components/views/admin/PasswordReset.vue'
+import SendEmail from '../components/invoices/SendEmail.vue'
 
 const routes = [
     {
@@ -22,6 +23,12 @@ const routes = [
                 path: '',
                 component: invoiceIndex,
             },
+            {
+                path: 'email-send',
+                name: 'SendEmail',
+                component: SendEmail,
+                meta: { title: 'E-mail Enviado' }
+            }
         ],
     },
 

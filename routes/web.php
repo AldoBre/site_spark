@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -24,3 +24,4 @@ Route::get('/{pathMatch}', function (){
     return view('welcome');
 })->where('pathMatch',".*");
 
+Route::post('/enviar-email',[ContactController::class, 'sendEmail']);

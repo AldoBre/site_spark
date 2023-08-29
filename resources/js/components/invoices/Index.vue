@@ -2,10 +2,10 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
-        <div class="d-flex flex-column gap transparent-card pa-2 px-5">
+        <div class="d-flex flex-column gap transparent-card pa-2 px-5 mt-5">
           <div>
             <h1 class="font-weight-black text-center">
-              Consultoria Bi e Desenvolvimento de Sites e Sistemas Personalizados
+              Consultoria Bi e Desenvolvimento de Sites e Sistemas Web Personalizados
             </h1>
           </div>
           <div class="d-flex py-4">

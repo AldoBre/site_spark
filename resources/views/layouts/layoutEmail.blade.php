@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-    <title>Redefinição de Senha</title>
+
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -32,6 +31,13 @@
             justify-content: center;
         }
 
+        .content {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
         p {
             color: #666666;
             line-height: 1.6;
@@ -41,27 +47,8 @@
             text-decoration: none;
         }
 
-        button {
-            padding: 10px;
-            background-color: black;
-            color: yellow;
-            font-size: 18px;
-            border-radius: 8px;
-            border: 0;
-            width: 250px;
-            height: 50px;
-            cursor: pointer;
-        }
-
         .footer {
             color: yellow;
-        }
-
-        .button {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            
         }
 
         .div_info {
@@ -85,21 +72,16 @@
 <body>
     <div class="container">
         <div class="container_pad">
-            <h1>Solicitação de Redefinição de Senha</h1>
-            <p>Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.
+            <h1>Solicitação de Contato</h1>
+            <p>Olá, recebemos uma solicitação de contato, retorme para o e-mail ou pelo telefone a baixo, seguem dados
             </p>
 
-            <p>Para redefinir sua senha, clique no botão a baixo:</p>
-
-            <div class="button">
-                <a href="{{ $url }}"><button> Redefinir Senha </button></a>
+            <div class="content">
+                @yield('content')
             </div>
 
             <div class="div_info">
-
-                <p>Se o botão não funcionar, <a href="{{ $url }}"> <b>Clique aqui.</b> </a> <br></p>
-
-                <p>Se você não solicitou uma redefinição de senha, ignore este e-mail.</p>
+                <p>Lembre-se o prazo para retorno é de ate 48 Horas. </p>
             </div>
         </div>
 
@@ -107,8 +89,6 @@
             <p>Desenvolvido por <a class="footer" href="http://belmiratech.com.br">Belmira Tech &copy;</a> </p>
         </div>
     </div>
-
-
 </body>
 
 </html>

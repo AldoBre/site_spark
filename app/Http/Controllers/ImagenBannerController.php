@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ImagenBanner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImagenBannerController extends Controller
 {
@@ -12,7 +13,8 @@ class ImagenBannerController extends Controller
      */
     public function index()
     {
-        //
+        $images = ImagenBanner::pluck('image_banner');
+        return response()->json($images);
     }
 
     /**
@@ -20,7 +22,7 @@ class ImagenBannerController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +30,32 @@ class ImagenBannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image_banner' => 'required|file|image|max:1024',
+        ]);
+
+        $existingImage = ImagenBanner::first();
+
+        if($existingImage){
+            if($existingImage->image_banner){
+                Storage::disk('public')->delete($existingImage->image_banner);
+            }
+            $image = $existingImage;
+        } else {
+            $image = new ImagenBanner;
+        }
+
+        if($request->hasFile('image_banner')){
+            $imagePath = $request->file('image_banner')->store('image_folder', 'public');
+            if (!$imagePath) {
+                return response()->json(['message' => 'Erro ao salvar a imagem.'], 500);
+            }
+            $image->image_banner = $imagePath;
+        }
+
+        $image->save();
+
+        return response()->json(['message' => 'Imagem adicioanda com sucesso.']);
     }
 
     /**
@@ -52,7 +79,7 @@ class ImagenBannerController extends Controller
      */
     public function update(Request $request, ImagenBanner $imagenBanner)
     {
-        //
+        
     }
 
     /**
@@ -60,6 +87,8 @@ class ImagenBannerController extends Controller
      */
     public function destroy(ImagenBanner $imagenBanner)
     {
-        //
+        $imagenBanner->delete();
+
+        return response()->json(['message' => 'Imagem excluída com sucesso']);
     }
 }
