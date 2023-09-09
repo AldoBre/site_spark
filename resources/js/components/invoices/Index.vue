@@ -2,10 +2,11 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
-        <div class="d-flex flex-column gap transparent-card pa-2 px-5">
+        <div class="d-flex flex-column gap transparent-card pa-2 px-5 mt-5">
           <div>
             <h1 class="font-weight-black text-center">
-              Consultoria Bi e Desenvolvimento de Sites e Sistemas Personalizados
+              Consultoria Bi e Desenvolvimento de Sites e Sistemas Web
+              Personalizados
             </h1>
           </div>
           <div class="d-flex py-4">
@@ -85,24 +86,50 @@
     </v-row>
 
     <v-row>
-    <v-col cols="12">
-      <div class="transparent-card pa-5 text-center">
-        <h2>Nossos Clientes e Parceiros</h2>
+  <v-col cols="12">
+    <div class="transparent-card pa-5 text-center">
+      <h2>Nossos Clientes e Parceiros</h2>
 
-        <div class="d-flex justify-center align-center">
-
-          <v-btn @click="prevSlide" class="mr-3">Anterior</v-btn>
-          <div class="d-flex gap">
-            <div v-for="(image, index) in visibleImages" :key="index">
-              <img width="235" :src="image" alt="Image">
-            </div>
+      <v-col class="d-flex justify-center align-center pa-5">
+        <v-btn @click="prevSlide" class="mr-3" v-if="images.length > 4">
+          <v-icon v-if="isSmallScreen">mdi-chevron-up</v-icon>
+          <v-icon v-else>mdi-chevron-left</v-icon>
+        </v-btn>
+        <div class="d-flex flex-wrap justify-center gap">
+          <div v-for="(image, index) in visibleImages" :key="index">
+            <v-card
+              :cols="isSmallScreen ? 12 : 3"
+              :elevation="isHovering ? 12 : 2"
+              class="image-card"
+            >
+              <v-img
+                width="200"
+                :aspect-ratio="1"
+                :src="image.name"
+                alt="Image"
+                cover
+              >
+                <div class="link-container">
+                  <a
+                    class="text-decoration-none text-white"
+                    target="_blank"
+                    :href="image.site"
+                  >
+                    {{ image.title }}
+                    <v-icon icon="mdi-arrow-right"></v-icon>
+                  </a>
+                </div>
+              </v-img>
+            </v-card>
           </div>
-          <v-btn @click="nextSlide" class="ml-3">Próxima</v-btn>
         </div>
+        <v-btn @click="nextSlide" class="ml-3" v-if="images.length > 4"><v-icon v-if="isSmallScreen">mdi-chevron-down</v-icon>
+          <v-icon v-else>mdi-chevron-right</v-icon></v-btn>
+      </v-col>
+    </div>
+  </v-col>
+</v-row>
 
-      </div>
-    </v-col>
-  </v-row>
 
     <v-row>
       <v-col cols="12">
@@ -146,9 +173,11 @@
             <v-col cols="12" md="2">
               <v-icon size="50">mdi-tailwind</v-icon>
               <p>
-                TailwindCSS: Framework para desenvolvimento de interfaces modernas de forma rápida e flexível.
+                TailwindCSS: Framework para desenvolvimento de interfaces
+                modernas de forma rápida e flexível.
               </p>
-            </v-col>   <v-col cols="12" md="2">
+            </v-col>
+            <v-col cols="12" md="2">
               <v-icon size="50">mdi-chart-tree</v-icon>
               <p>
                 Power BI: Plataforma poderosa para análise de dados e dashboards
@@ -167,20 +196,20 @@ export default {
   data() {
     return {
       images: [
-        'img/img01.jpg',
-        'img/img02.jpg',
-        'img/img03.jpg',
-        'img/img01.jpg',
-        'img/img02.jpg',
-        'img/img03.jpg',
-        'img/img01.jpg',
-        'img/img02.jpg',
-        'img/img03.jpg',
-        'img/img01.jpg',
-        // Adicione mais imagens conforme necessário
+        {
+          name: "img/logo-myvos.jpg",
+          title: "MyVos",
+          site: "https://myvos.com.br/",
+        },
+        {
+          name: "img/ere.jpg",
+          title: "Método éRe",
+          site: "https://metodoere.use303.com.br/",
+        }
       ],
       currentPosition: 0,
       imagesPerSlide: 4,
+      isSmallScreen: window.innerWidth < 768
     };
   },
   computed: {
@@ -213,5 +242,33 @@ export default {
 }
 .gap {
   gap: 1rem;
+}
+
+/* CSS para o efeito de hover */
+.image-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transição suave */
+}
+
+.image-card:hover {
+  opacity: 0.8; /* Diminui a opacidade ao passar o mouse */
+}
+
+/* CSS para a div com o link para o site */
+.image-card .link-container {
+  position: absolute;
+  bottom: -100%; /* Inicialmente, a div está escondida acima da imagem */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  transition: bottom 0.3s ease; /* Efeito de deslizamento de baixo para cima */
+}
+
+.image-card:hover .link-container {
+  bottom: 0; /* Mostra a div com o link ao passar o mouse */
 }
 </style>

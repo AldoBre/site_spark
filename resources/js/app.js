@@ -14,5 +14,17 @@ const vuetify = createVuetify({
     directives,
   })
 
+  axios.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('authTokenBelmira');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 
 createApp(app).use(router).use(vuex).use(vuetify).mount("#app")

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-    <title>Redefinição de Senha</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -21,15 +21,30 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .text_info {
+            padding: 10px;
+        }
+
         .container_pad {
-            padding: 15px;
             box-sizing: border-box;
+        }
+
+        .container_pad h1 {
+            padding: 10px;
+            text-align: center;
         }
 
         h1 {
             color: #333333;
             display: flex;
             justify-content: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         p {
@@ -41,27 +56,8 @@
             text-decoration: none;
         }
 
-        button {
-            padding: 10px;
-            background-color: black;
-            color: yellow;
-            font-size: 18px;
-            border-radius: 8px;
-            border: 0;
-            width: 250px;
-            height: 50px;
-            cursor: pointer;
-        }
-
         .footer {
             color: yellow;
-        }
-
-        .button {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            
         }
 
         .div_info {
@@ -77,7 +73,11 @@
             padding: 0px 20px;
             border-end-start-radius: 10px;
             border-end-end-radius: 10px;
+        }
 
+        .imgSize {
+            color: rgb(119, 49, 141);
+            font-size: 30px;
         }
     </style>
 </head>
@@ -85,30 +85,25 @@
 <body>
     <div class="container">
         <div class="container_pad">
-            <h1>Solicitação de Redefinição de Senha</h1>
-            <p>Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.
-            </p>
+            <h1>Solicitação de Contato Recebida com Sucesso!</h1>
 
-            <p>Para redefinir sua senha, clique no botão a baixo:</p>
+            <div class="content">
+                @yield('content')
+            </div>
+            <p class="text_info"> Recebemos seu contato, em até 2 dias úteis entraremos em contato com você, por e-mail ou telefone.</p>
 
-            <div class="button">
-                <a href="{{ $url }}"><button> Redefinir Senha </button></a>
+            <div>
+                Nos siga nas redes sociais!
+                <div>
+                    <a class="imgSize" href="https://www.instagram.com/belmiratech/"><span
+                            class="mdi mdi-instagram"></span></a>
+                </div>
             </div>
 
-            <div class="div_info">
-
-                <p>Se o botão não funcionar, <a href="{{ $url }}"> <b>Clique aqui.</b> </a> <br></p>
-
-                <p>Se você não solicitou uma redefinição de senha, ignore este e-mail.</p>
+            <div class="footer_info">
+                <p>Desenvolvido por <a class="footer" href="http://belmiratech.com.br">Belmira Tech &copy;</a> </p>
             </div>
         </div>
-
-        <div class="footer_info">
-            <p>Desenvolvido por <a class="footer" href="http://belmiratech.com.br">Belmira Tech &copy;</a> </p>
-        </div>
-    </div>
-
-
 </body>
 
 </html>
