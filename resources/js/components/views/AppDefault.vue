@@ -9,6 +9,7 @@
           <v-col cols="6" sm="10">
             <v-row class="d-flex align-center justify-center gap">
               <v-btn class="text-decoration-none hidden-sm-and-down"
+                     to="/aboutus"
                 >Sobre Nós</v-btn
               >
               <v-btn class="text-decoration-none hidden-sm-and-down"
